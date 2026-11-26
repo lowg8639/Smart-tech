@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Tech Engineering Solution</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Header / Hero Banner */
+    header {
+      background: linear-gradient(135deg, #0b2545 0%, #134074 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-bottom: 6px solid #f59e0b;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    header .subtitle {
+      background-color: #f59e0b;
+      color: #0b2545;
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      font-weight: 800;
+      border-radius: 4px;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #e2e8f0;
+    }
+
+    /* Navigation Tabs Bar */
+    .nav-tabs {
+      background-color: #071930;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 2px solid transparent;
+      color: #cbd5e1;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .tab-btn.active {
+      background-color: #f59e0b;
+      color: #0b2545;
+      border-color: #f59e0b;
+    }
+
+    /* Tab Content Sections */
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1150px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border-top: 5px solid #0b2545;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      background-color: #0b2545;
+      color: #ffffff;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .card-header h2 {
+      font-size: 1.35rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-header span {
+      color: #fbbf24;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card ul li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-weight: 500;
+    }
+
+    .card ul li:last-child {
+      border-bottom: none;
+    }
+
+    .card ul li::before {
+      content: "✔️ ";
+      color: #f59e0b;
+      font-weight: bold;
+      margin-right: 6px;
+    }
+
+    /* Additional Highlights Bar */
+    .highlights {
+      background-color: #134074;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .highlight-item {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+    }
+
+    /* Gallery Styling */
+    .section-title {
+      font-size: 1.8rem;
+      color: #0b2545;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-item {
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      background-color: #cbd5e1;
+    }
+
+    .gallery-info {
+      padding: 1.2rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .gallery-info h3 {
+      font-size: 1.1rem;
+      color: #0b2545;
+      margin-bottom: 0.4rem;
+    }
+
+    .gallery-info p {
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    /* Creator / Admin Upload Box (Hidden by default, toggled via secret button) */
+    .creator-panel {
+      background: #ffffff;
+      border: 2px dashed #f59e0b;
+      border-radius: 10px;
+      padding: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+      display: none;
+    }
+
+    .creator-panel.visible {
+      display: block;
+    }
+
+    .creator-panel h3 {
+      color: #0b2545;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      color: #334155;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    .upload-btn {
+      background-color: #0b2545;
+      color: #ffffff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+
+    .upload-btn:hover {
+      background-color: #134074;
+    }
+
+    .admin-toggle-bar {
+      text-align: right;
+      margin-bottom: 1.5rem;
+    }
+
+    .admin-toggle-btn {
+      background: none;
+      border: none;
+      color: #64748b;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Contact Section */
+    .contact-box {
+      background-color: #0b2545;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      border: 3px solid #f59e0b;
+    }
+
+    .contact-box h2 {
+      color: #fbbf24;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .phone-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .phone-btn {
+      background-color: #f59e0b;
+      color: #0b2545;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .phone-btn:hover {
+      background-color: #fbbf24;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #071930;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+    }
+
+    footer strong {
+      color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Smart Tech Engineering</h1>
+    <div class="subtitle">SOLUTION</div>
+    <p>Innovative Solutions for a Better Tomorrow</p>
+  </header>
+
+  <!-- Navigation Tabs Bar -->
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('home-tab', this)">Home</button>
+    <button class="tab-btn" onclick="switchTab('gallery-tab', this)">Project Gallery</button>
+  </nav>
+
+  <!-- HOME TAB CONTENT -->
+  <div id="home-tab" class="tab-content active">
+    <main class="container">
+      <!-- Main 3 Service Cards -->
+      <section class="services-grid">
+        
+        <!-- Card 1: Welding & Fabrication -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Welding & Fabrication</h2>
+            <span>Strong. Durable. Reliable.</span>
+          </div>
+          <ul>
+            <li>General Welding (MIG, ARC)</li>
+            <li>Metal Fabrication & Designs</li>
+            <li>Steel Gates, Grills & Railings</li>
+            <li>Window Frames & Structures</li>
+            <li>Tables, Stands & Shelves</li>
+            <li>Repairs & Maintenance</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Electrical Services -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Electrical Services</h2>
+            <span>Safe. Efficient. Professional.</span>
+          </div>
+          <ul>
+            <li>Electrical Installations</li>
+            <li>House Wiring & Rewiring</li>
+            <li>Distribution Boards (DB)</li>
+            <li>Lighting Solutions (Indoor/Outdoor)</li>
+            <li>Sockets & Switches</li>
+            <li>Solar Power Systems</li>
+            <li>Fault Finding & Repairs</li>
+            <li>Meter & CIU Services</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Carpentry -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Carpentry</h2>
+            <span>Creative. Quality. Lasting.</span>
+          </div>
+          <ul>
+            <li>Custom Furniture</li>
+            <li>Kitchen Cabinets</li>
+            <li>Wardrobes & Cupboards</li>
+            <li>Doors & Door Frames</li>
+            <li>Ceiling & Partitioning</li>
+            <li>Office & Home Interiors</li>
+            <li>Wooden Works & Repairs</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <!-- Extra Features Strip -->
+      <section class="highlights">
+        <div class="highlight-item">🛠️ Installation & Commissioning</div>
+        <div class="highlight-item">⚙️ Repairs & Maintenance</div>
+        <div class="highlight-item">📐 Custom Fabrication & Design</div>
+        <div class="highlight-item">🤝 Site Visits & Quotation</div>
+        <div class="highlight-item">👍 Legal Advice & Support</div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact-box">
+        <h2>Contact Us Today</h2>
+        <p>Tap any number below to call or inquire directly:</p>
+        <div class="phone-links">
+          <a href="tel:+254757844268" class="phone-btn">📞 0757 844 268</a>
+          <a href="tel:+254790030312" class="phone-btn">📞 0790 030 312</a>
+          <a href="tel:+254742304659" class="phone-btn">📞 0742 304 659</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- PROJECT GALLERY TAB CONTENT -->
+  <div id="gallery-tab" class="tab-content">
+    <main class="container">
+      <h2 class="section-title">Our Recent Works & Activities</h2>
+      <p class="section-desc">Explore snapshots of our welding, fabrication, and structural engineering work.</p>
+
+      <!-- Hidden Admin Mode Toggle -->
+      <div class="admin-toggle-bar">
+        <button class="admin-toggle-btn" onclick="toggleCreatorPanel()">Creator Panel Login</button>
+      </div>
+
+      <!-- Creator Panel for Uploading New Project Photos -->
+      <div id="creatorPanel" class="creator-panel">
+        <h3>🔒 Creator Upload Panel</h3>
+        <div class="form-group">
+          <label for="projectTitle">Project Title</label>
+          <input type="text" id="projectTitle" placeholder="e.g., Heavy Duty Steel Gate">
+        </div>
+        <div class="form-group">
+          <label for="projectDesc">Short Description / Activity Details</label>
+          <textarea id="projectDesc" rows="2" placeholder="Describe the fabrication work..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Image URL / Link</label>
+          <input type="text" id="imageUrl" placeholder="Paste image file name or link">
+        </div>
+        <button class="upload-btn" onclick="addNewProject()">Publish to Gallery</button>
+      </div>
+
+      <!-- Gallery Grid containing all uploaded project photos -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <!-- New Item: Custom Steel Window Security Grill -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('window-security-grill.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Custom Steel Window Security Grill</h3>
+            <p>Heavy-duty fabricated steel window grill with curved rail details and a durable blue protective finish.</p>
+          </div>
+        </div>
+
+        <!-- New Item: Geometric Z-Frame Coffee Table (Brown Glass) -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000201479.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Z-Frame Coffee Table (Brown Glass)</h3>
+            <p>Custom polished steel Z-base table paired with luxury brown tinted safety glass top.</p>
+          </div>
+        </div>
+
+        <!-- New Item: Geometric Table Base Blueprint & Build -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000201481.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Geometric Dining / Coffee Table Blueprints</h3>
+            <p>Precision-welded heavy steel base framed with exact dimensional schematics for custom furniture.</p>
+          </div>
+        </div>
+
+        <!-- New Item: Raw Welded Z-Frame Base -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000201472.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Raw Welded Steel Table Base</h3>
+            <p>Unfinished structural steel framework showcasing clean welds and sharp geometric angles.</p>
+          </div>
+        </div>
+
+        <!-- New Item: Clear Glass Z-Frame Coffee Table -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000201475.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Z-Frame Coffee Table (Clear Glass)</h3>
+            <p>Modern architectural glass-top coffee table supported by high-grade brushed steel legs.</p>
+          </div>
+        </div>
+
+        <!-- New Item: Workshop Door & Frame Assembly -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000179509.png');"></div>
+          <div class="gallery-info">
+            <h3>Workshop Door Frame & Assembly Setup</h3>
+            <p>Custom metal door frames and security doors staged outside workshop during fabrication.</p>
+          </div>
+        </div>
+
+        <!-- Business Banner / Logo -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000206434.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Smartweld Fabrication & Electrical Services</h3>
+            <p>Your one-stop professional solution for metal fabrication, structural welding, and electrical installations.</p>
+          </div>
+        </div>
+
+        <!-- Modern Car Wash Bay Structure -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000202646.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Automated Self-Service Car Wash Station</h3>
+            <p>Heavy structural steel fabrication and overhead framework setup for a commercial wash bay.</p>
+          </div>
+        </div>
+
+        <!-- Glass & Metal Entrance Door -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000202435.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Modern Glass & Steel Entrance Door</h3>
+            <p>Sleek metallic door frame with frosted and clear glass panels paired with stylish long pull handles.</p>
+          </div>
+        </div>
+
+        <!-- Dual Panel Metal Door -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000202454.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Heavy Duty Double Security Door</h3>
+            <p>Custom-fabricated metal door with geometric paneling and secure locking mechanisms.</p>
+          </div>
+        </div>
+
+        <!-- Modern Door Designs Collection -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000202430.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Custom Steel Door Designs</h3>
+            <p>Variety of stylish matte-finish steel doors featuring vertical louver accents and clean paneling.</p>
+          </div>
+        </div>
+
+        <!-- Elegant Single Security Door -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000202457.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Architectural Metal Door & Frame</h3>
+            <p>Precision-welded security door with decorative louvered top transom and vertical grille elements.</p>
+          </div>
+        </div>
+
+        <!-- Industrial Door Fabrication Batch -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000189836.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Workshop Door Fabrication Batch</h3>
+            <p>Multiple steel security doors lined up after welding and panel assembly during production.</p>
+          </div>
+        </div>
+
+        <!-- Structural Floor / Platform Framing -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000185910.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Structural Steel Platform & Tread Plates</h3>
+            <p>Heavy-duty under-framing and checkered floor plating for elevated structural installations.</p>
+          </div>
+        </div>
+
+        <!-- Blue Gate Production -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000182090.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Industrial Blue Gate Production</h3>
+            <p>Durable steel gates welded and coated in protective blue primer finish.</p>
+          </div>
+        </div>
+
+        <!-- TV Media Wall Unit -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000210021.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Custom TV Media Wall Unit</h3>
+            <p>Precision metal fabrication and structural framework for a modern entertainment center with integrated lighting channels.</p>
+          </div>
+        </div>
+
+        <!-- Designer Display Shelf Stand -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000210022.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Geometric Display Stand</h3>
+            <p>Custom welded metallic frame designed for elegant home decor and display setups.</p>
+          </div>
+        </div>
+
+        <!-- Moon & Star Shelving Unit -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000210019.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Moon & Star Display Shelf</h3>
+            <p>Artistic crescent moon and star metal shelving structure combined with wooden tiers.</p>
+          </div>
+        </div>
+
+        <!-- Modern Coffee Table -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000210298.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Modern Z-Frame Coffee Table</h3>
+            <p>Sturdy steel frame fabrication with lower storage slat shelf and premium finish.</p>
+          </div>
+        </div>
+
+        <!-- Moon Lounger Chair -->
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('1000210020.jpg');"></div>
+          <div class="gallery-info">
+            <h3>Crescent Moon Lounger Chair</h3>
+            <p>Ergonomic curved metal frame with attached side table stand for ultimate relaxation.</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="contact-box">
+        <h2>Want a Project Like This Done?</h2>
+        <p>Talk directly with our technical team:</p>
+        <div class="phone-links">
+          <a href="tel:+254757844268" class="phone-btn">📞 0757 844 268</a>
+          <a href="tel:+254790030312" class="phone-btn">📞 0790 030 312</a>
+          <a href="tel:+254742304659" class="phone-btn">📞 0742 304 659</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p><strong>Build • Power • Create</strong> — Quality Work. On Time. Every Time.</p>
+  </footer>
+
+  <script>
+    function switchTab(tabId, btnElement) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btnElement.classList.add('active');
+    }
+
+    function toggleCreatorPanel() {
+      document.getElementById('creatorPanel').classList.toggle('visible');
+    }
+
+    function addNewProject() {
+      const title = document.getElementById('projectTitle').value;
+      const desc = document.getElementById('projectDesc').value;
+      const imgUrl = document.getElementById('imageUrl').value;
+      if (!title || !desc || !imgUrl) {
+        alert('Please fill in all fields (Title, Description, and Image Link).');
+        return;
+      }
+      const newItem = document.createElement('div');
+      newItem.className = 'gallery-item';
+      newItem.innerHTML = `<div class="gallery-img" style="background-image: url('${imgUrl}');"></div><div class="gallery-info"><h3>${title}</h3><p>${desc}</p></div>`;
+      document.getElementById('galleryGrid').prepend(newItem);
+      document.getElementById('projectTitle').value = '';
+      document.getElementById('projectDesc').value = '';
+      document.getElementById('imageUrl').value = '';
+      document.getElementById('creatorPanel').classList.remove('visible');
+    }
+  </script>
+</body>
+</html>
